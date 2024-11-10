@@ -10,7 +10,7 @@ function download_discord {
 		sleep 1;
 		wait
 		echo "Installation...";
-		if sudo apt install ./tmp/discord.deb; then
+		if sudo apt install /tmp/discord.deb; then
 			echo "Installation finished...";
 		else
 			echo "Discord NOT installed"
