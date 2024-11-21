@@ -11,6 +11,9 @@ set cursorline
 set nocompatible
 set laststatus=2
 
+set laststatus=2
+set statusline=%m\ %F\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L:%l\ %P%)
+
 set clipboard=unnamedplus
 
 if (has("termguicolors"))
@@ -36,27 +39,30 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
-" Plug 'godlygeek/tabular'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
-Plug 'itchyny/lightline.vim'
-" Plug 'erietz/vim-terminator', { 'branch': 'main'}
 Plug 'tomasiser/vim-code-dark'
 Plug 'preservim/nerdtree'
 Plug 'ervandew/supertab'
-Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
 let g:mkdp_theme = 'light'
-colorscheme codedark
+" colorscheme codedark
+" colorscheme desert
+" colorscheme evening
+colorscheme habamax
+" colorscheme lunaperche
+" colorscheme pablo
+" colorscheme slate
 
 " brackets closer mappings
-" inoremap ' ''<left>
-" inoremap ( ()<left>
-" inoremap [ []<left>
-" inoremap { {}<left>
-" inoremap {<CR> {<CR>}<ESC>O
-" inoremap {;<CR> {<CR>};<ESC>O
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 filetype plugin on
 
