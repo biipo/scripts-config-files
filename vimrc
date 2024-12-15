@@ -1,11 +1,13 @@
 set relativenumber
 set number
-set tabstop=4
-set smarttab
 set mouse=a
-set softtabstop=4
 set autoindent
+
+" This part set 4 spaces for identation, also when pressing tab
+set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set expandtab  
 
 set cursorline
 set nocompatible
@@ -36,24 +38,20 @@ call plug#begin()
 
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
-Plug 'tomasiser/vim-code-dark'
 Plug 'preservim/nerdtree'
-Plug 'ervandew/supertab'
+Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
 let g:mkdp_theme = 'light'
-" colorscheme codedark
-" colorscheme desert
 " colorscheme evening
-colorscheme habamax
+" colorscheme habamax
 " colorscheme lunaperche
 " colorscheme pablo
-" colorscheme slate
+colorscheme slate
 
 " brackets closer mappings
 inoremap " ""<left>
