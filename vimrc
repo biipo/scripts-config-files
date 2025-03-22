@@ -9,6 +9,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab  
 
+set hls " set highlight search
+
 set cursorline
 set nocompatible
 set laststatus=2
@@ -18,14 +20,15 @@ set statusline=%m\ %F\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L
 
 set clipboard=unnamedplus
 
-if (has("termguicolors"))
- set termguicolors
-endif
+filetype on
+filetype plugin on
+filetype indent on
+filetype plugin indent on
 
 " Maps keys for selection commentary
 noremap <leader>7 :Commentary<cr>
-noremap <leader>9 :Goyo<cr>
-vnoremap <C-c> "*y
+" Map for remove highlight
+noremap <leader>h :noh<cr>
 
 syntax enable
 
@@ -38,31 +41,39 @@ call plug#begin()
 
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/goyo.vim'
-Plug 'amix/vim-zenroom2'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'preservim/nerdtree'
-Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
+" Default mapping for MULTIPLE CURSORS
+" let g:multi_cursor_start_word_key      = '<C-n>'  " ctrl+n
+" let g:multi_cursor_select_all_word_key = '<C-N>'  " ctrl+
+" let g:multi_cursor_start_key           = 'g<C-n>' " ctrl+
+" let g:multi_cursor_select_all_key      = 'g<A-n>' " ctrl+
+" let g:multi_cursor_next_key            = '<C-n>'  " ctrl+
+" let g:multi_cursor_prev_key            = '<C-p>'  " ctrl+
+" let g:multi_cursor_skip_key            = '<C-x>'  " ctrl+
+" let g:multi_cursor_quit_key            = '<Esc>'  " ctrl+
+
+ " SET LIGHT THEME ON MARKDOWN PREV
 let g:mkdp_theme = 'light'
-" colorscheme evening
-" colorscheme habamax
-" colorscheme lunaperche
-" colorscheme pablo
+
+ " COLORSCHEME
 colorscheme slate
 
-" brackets closer mappings
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" Define a function to set the mappings
+" function! SetClosing()
+"     inoremap " \\<left>
+"     inoremap ' ''<left>
+"     inoremap ( ()<left>
+"     inoremap [ []<left>
+"     inoremap { {}<left>
+"     inoremap {<CR> {<CR>}<ESC>O
+"     inoremap {;<CR> {<CR>};<ESC>O
+" endfunction
 
-filetype plugin on
-
-nnoremap <leader>. :NERDTreeFocus<CR>
-
+" redirect shell output to tmp file using read
+command! -nargs=1 ShellToTemp execute 'enew' | execute 'read !'.<args>
+" This version also save the tmp file into /tmp/ folder
+" command! -nargs=1 ShellToTemp execute 'enew' | execute 'read !'.<args> | execute 'w /tmp/tempfile_'.strftime('%Y%m%d%H%M%S').'.txt'
