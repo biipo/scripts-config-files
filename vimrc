@@ -15,6 +15,7 @@ set cursorline
 set nocompatible
 set laststatus=2
 
+" For status line
 set laststatus=2
 set statusline=%m\ %F\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L:%l\ %P%)
 
@@ -29,6 +30,8 @@ filetype plugin indent on
 noremap <leader>7 :Commentary<cr>
 " Map for remove highlight
 noremap <leader>h :noh<cr>
+" Open the command buffer where I can use vi keys
+noremap <leader>1 q:
 
 syntax enable
 
@@ -73,7 +76,10 @@ colorscheme slate
 "     inoremap {;<CR> {<CR>};<ESC>O
 " endfunction
 
+" commands for SHELL OUTPUT TO TMP PAGE
 " redirect shell output to tmp file using read
-command! -nargs=1 ShellToTemp execute 'enew' | execute 'read !'.<args>
+command! -nargs=1 W execute 'split tabnew' | execute 'read !'.printf('%s', <q-args>)
 " This version also save the tmp file into /tmp/ folder
-" command! -nargs=1 ShellToTemp execute 'enew' | execute 'read !'.<args> | execute 'w /tmp/tempfile_'.strftime('%Y%m%d%H%M%S').'.txt'
+" command! -nargs=1 Vish execute 'enew' | execute 'read !'.printf('%s', <q-args>) | execute 'w /tmp/tempfile_'.strftime('%Y%m%d%H%M%S').'.txt'
+
+" Set symlink: ln -s -f ~/dotfiles/.vimrc ~/.vimrc
