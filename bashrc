@@ -100,10 +100,11 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 # alias DB='cd ~/Documents/UNI/SECONDO_ANNO/SECONDO_SEMESTRE/basi_di_dati/BD-project/'
-alias unive='cd ~/Documents/UNI/TERZO_ANNO/primo_semestre/'
-alias LS="ls -ahl"
-alias lsd="ls -d */"
-
+alias unive='cd ~/Documents/UNI/TERZO_ANNO/'
+alias clipcontent='xclip -sel c <'
+alias rm='rm -I'
+alias spacerem='~/.local/bin/spacerem'
+alias ls='lsd -l'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -120,9 +121,24 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# CUSTOM FUNCTIONS
+function mdless()
+  {
+      if [[ -n "$1" ]]
+      then
+          if [[ -f "$1" ]]
+          then
+              echo $1
+              cat <(echo ".TH $1 7 `command date --iso-8601` Dr.Beco Markdown") <(pandoc -t man "$1" ) | groff -K utf8 -t -T utf8 -man 2>/dev/null | less -FKr
+          fi
+      fi
+  }
+
 export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/filippo/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
-export PATH="/home/filippo/Downloads/android-studio/bin:$PATH"
 export PATH="/home/filippo/Documents/learning/computer_science/android/flutter_SDK/flutter/bin:$PATH"
 export JAVA_HOME="/home/filippo/.jdks/java-21-openjdk-21.0.3.0.9-1.portable.jdk.x86_64/bin:$JAVA_HOME"
 export CHROME_EXECUTABLE="/usr/bin/firefox"
+export MANPATH="/home/filippo/.local/texlive/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/home/filippo/.local/texlive/texmf-dist/doc/info:$INFOPATH"
+export PATH="/home/filippo/.local/texlive/bin/x86_64-linux:$PATH"
 . "$HOME/.cargo/env"

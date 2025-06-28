@@ -1,6 +1,5 @@
 set relativenumber
 set number
-set mouse=a
 set autoindent
 
 " This part set 4 spaces for identation, also when pressing tab
@@ -8,8 +7,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab  
-
-set hls " set highlight search
 
 set cursorline
 set nocompatible
@@ -19,7 +16,7 @@ set laststatus=2
 set laststatus=2
 set statusline=%m\ %F\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L:%l\ %P%)
 
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 filetype on
 filetype plugin on
@@ -28,10 +25,17 @@ filetype plugin indent on
 
 " Maps keys for selection commentary
 noremap <leader>7 :Commentary<cr>
-" Map for remove highlight
-noremap <leader>h :noh<cr>
+" Map for setting highlight
+noremap <leader>h :set hls<cr>
 " Open the command buffer where I can use vi keys
 noremap <leader>1 q:
+
+" Toggle mouse on and off
+noremap <leader>m :set mouse=a<cr>
+
+noremap <leader>p :syntax sync minlines=20<cr>
+noremap <leader>l :syntax sync fromstart<cr>
+
 
 syntax enable
 
@@ -64,6 +68,10 @@ let g:mkdp_theme = 'light'
 
  " COLORSCHEME
 colorscheme slate
+" colorscheme habamax
+" colorscheme desert
+" colorscheme default
+
 
 " Define a function to set the mappings
 " function! SetClosing()
