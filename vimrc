@@ -14,9 +14,9 @@ set laststatus=2
 
 " For status line
 set laststatus=2
-set statusline=%m\ %F\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L:%l\ %P%)
+set statusline=%m\ %f\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L:%l\ %P%)
 
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 
 filetype on
 filetype plugin on
@@ -48,8 +48,9 @@ call plug#begin()
 
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'preservim/nerdtree'
+Plug 'kaarmu/typst.vim'
 
 call plug#end()
 
@@ -65,6 +66,10 @@ call plug#end()
 
  " SET LIGHT THEME ON MARKDOWN PREV
 let g:mkdp_theme = 'light'
+
+
+" For typst watch
+let g:typst_pdf_viewer = 'floorp'
 
  " COLORSCHEME
 colorscheme slate

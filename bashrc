@@ -72,7 +72,9 @@ fi
 #     ;;
 # esac
 
-export PS1="\[\e[0;32m\]\u\[\e[0;37m\]: \[\e[0;36m\]\W \[\e[0;33m\]> \[\e[0m\]"
+#export PS1="\[\e[0;32m\]\u\[\e[0;37m\]: \[\e[0;36m\]\W \[\e[0;33m\]> \[\e[0m\]"
+#export PS1="\[\e[34m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[37m\]\h\[\e[m\]:\[\e[32m\][\[\e[m\]\[\e[32m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\n \[\e[35m\]>>\[\e[m\] "
+export PS1="\[\e[34m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[37m\]\h\[\e[m\]:\[\e[32m\][\[\e[m\]\[\e[32m\]\W\[\e[m\]\[\e[32m\]]\[\e[m\]\n \[\e[35m\]>>\[\e[m\] "
 
 
 # enable color support of ls and also add handy aliases
@@ -82,7 +84,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
@@ -101,10 +103,10 @@ fi
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 # alias DB='cd ~/Documents/UNI/SECONDO_ANNO/SECONDO_SEMESTRE/basi_di_dati/BD-project/'
 alias unive='cd ~/Documents/UNI/TERZO_ANNO/'
+alias tesi='cd ~/Documents/UNI/TERZO_ANNO/tesi/'
 alias clipcontent='xclip -sel c <'
 alias rm='rm -I'
-alias spacerem='~/.local/bin/spacerem'
-alias ls='lsd -l'
+alias vi="vim"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -135,10 +137,12 @@ function mdless()
   }
 
 export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/filippo/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
-export PATH="/home/filippo/Documents/learning/computer_science/android/flutter_SDK/flutter/bin:$PATH"
-export JAVA_HOME="/home/filippo/.jdks/java-21-openjdk-21.0.3.0.9-1.portable.jdk.x86_64/bin:$JAVA_HOME"
 export CHROME_EXECUTABLE="/usr/bin/firefox"
-export MANPATH="/home/filippo/.local/texlive/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="/home/filippo/.local/texlive/texmf-dist/doc/info:$INFOPATH"
-export PATH="/home/filippo/.local/texlive/bin/x86_64-linux:$PATH"
-. "$HOME/.cargo/env"
+export PATH="/opt/typst:$PATH"
+export PATH="/opt/go/bin:$PATH"
+export PATH="/opt/node-v22.18.0-linux-x64/bin:$PATH"
+#export PATH="/home/filippo/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
