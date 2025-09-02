@@ -141,7 +141,7 @@ export CHROME_EXECUTABLE="/usr/bin/firefox"
 export PATH="/opt/typst:$PATH"
 export PATH="/opt/go/bin:$PATH"
 export PATH="/opt/node-v22.18.0-linux-x64/bin:$PATH"
-#export PATH="/home/filippo/.local/bin:$PATH"
+export PATH="/home/filippo/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
