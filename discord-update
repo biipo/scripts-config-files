@@ -1,0 +1,28 @@
+#! /bin/bash
+
+echo "===== Starting installation ====="
+echo "Checking version..."
+html_content=$(curl -s https://discord.com/api/download?platform=linux&format=deb)
+wait
+link=$(echo $html_content | pup 'a attr{href}')
+curr_installed_version=$(dpkg -s discord | sed -n "s/Version: //p")
+
+last_released_version=$(echo $link | grep -Eo '[0-9.]+\.deb' | sed -n 's/\.deb//p')
+
+echo "Currently installed version: $curr_installed_version"
+echo "Last released version: $last_released_version"
+if [[ $curr_installed_version == $last_released_version ]]
+then
+    echo "Newer version already installed"
+else
+    echo "Installing newer version"
+    echo "Retrieving deb file...";
+    wget --https-only -q -O /tmp/discord.deb $link
+    wait
+    echo "Installation...";
+    sudo apt install /tmp/discord.deb && echo "===== Installation finished! =====" || echo "===== Discord NOT installed ====="
+fi
+
+
+
+# https://github.com/localsend/localsend/releases/download/v1.17.0/LocalSend-1.17.0-linux-x86-64.deb
