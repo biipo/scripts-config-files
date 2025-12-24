@@ -78,8 +78,7 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 # alias DB='cd ~/Documents/UNI/SECONDO_ANNO/SECONDO_SEMESTRE/basi_di_dati/BD-project/'
-alias unive='cd ~/Documents/MAGISTRALE/FIRST_YEAR/'
-alias aoc='cd /home/filippo/Documents/learning/computer_science/Advent_Of_Code/2025'
+#alias unive='cd ~/Documents/MAGISTRALE/FIRST_YEAR/'
 alias clipcontent='xclip -sel c <'
 alias rm='rm -I'
 alias vi="vim"
@@ -112,22 +111,25 @@ function mdless()
       fi
   }
 
-export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/filippo/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
-export CHROME_EXECUTABLE="/usr/bin/firefox"
-export PATH="/opt/typst:$PATH"
-export PATH="/opt/go/bin:$PATH"
-export PATH="/opt/node-v22.18.0-linux-x64/bin:$PATH"
+#export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/filippo/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
+#export CHROME_EXECUTABLE="/usr/bin/firefox"
+#export PATH="/opt/typst:$PATH"
+#export PATH="/opt/go/bin:$PATH"
+#export PATH="/opt/node-v22.18.0-linux-x64/bin:$PATH"
+#export PATH="/opt/chez-scheme/bin:$PATH"
 export PATH="/home/filippo/.local/bin:$PATH"
-export PATH="/opt/chez-scheme/bin:$PATH"
+export PATH="/opt/zig-x86_64-linux-0.14.1:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# eval "$(ssh-agent -s)"
-# ssh-add /home/filippo/.ssh/id_gitea > /dev/null
-# ssh-add /home/filippo/.ssh/id_ed25519 > /dev/null
-# Start ssh-agent only if not already running
-if ! pgrep -u "$USER" ssh-agent >/dev/null; then
-    eval "$(ssh-agent -s)" >/dev/null 2>&1 # we then add on the file ~/.ssh/config  the line "AddKeysToAgent yes"
+force_block_cursor() {
+  printf '\e[1 q'
+}
+PROMPT_COMMAND=force_block_cursor
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" >/dev/null
+    ssh-add ~/.ssh/id_github 2>/dev/null
 fi
