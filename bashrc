@@ -65,24 +65,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-# alias DB='cd ~/Documents/UNI/SECONDO_ANNO/SECONDO_SEMESTRE/basi_di_dati/BD-project/'
-#alias unive='cd ~/Documents/MAGISTRALE/FIRST_YEAR/'
-alias clipcontent='xclip -sel c <'
-alias rm='rm -I'
-alias vi="vim"
-
+# Loads the aliases defined in the ~/.bash_aliases file
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -98,6 +81,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# exported PATHs are in the ~/.profile file
+
 # CUSTOM FUNCTIONS
 function mdless()
   {
@@ -111,25 +96,8 @@ function mdless()
       fi
   }
 
-#export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/filippo/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
-#export CHROME_EXECUTABLE="/usr/bin/firefox"
-#export PATH="/opt/typst:$PATH"
-#export PATH="/opt/go/bin:$PATH"
-#export PATH="/opt/node-v22.18.0-linux-x64/bin:$PATH"
-#export PATH="/opt/chez-scheme/bin:$PATH"
-export PATH="/home/filippo/.local/bin:$PATH"
-export PATH="/opt/zig-x86_64-linux-0.14.1:$PATH"
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-force_block_cursor() {
-  printf '\e[1 q'
-}
-PROMPT_COMMAND=force_block_cursor
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)" >/dev/null
-    ssh-add ~/.ssh/id_github 2>/dev/null
 fi

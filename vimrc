@@ -18,35 +18,34 @@ set statusline=%m\ %f\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L
 
 " set clipboard=unnamedplus
 
+set cryptmethod=blowfish2
+set nobackup
+set nowritebackup
+set viminfo=
+
 filetype on
 filetype plugin on
 filetype indent on
 filetype plugin indent on
-
 syntax enable
 
-" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-" if empty(glob(data_dir . '/autoload/plug.vim'))
-"   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
-" call plug#begin()
-" 
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-" Plug 'preservim/nerdtree'
-" Plug 'kaarmu/typst.vim'
-" 
-" call plug#end()
-" 
-"  " SET LIGHT THEME ON MARKDOWN PREV
-" let g:mkdp_theme = 'light'
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+call plug#end()
+
+ " SET LIGHT THEME ON MARKDOWN PREV
+let g:mkdp_theme = 'light'
 
 " COLORSCHEME
 colorscheme slate
-" colorscheme habamax
-" colorscheme desert
-" colorscheme default
 
 " commands for SHELL OUTPUT TO TMP PAGE
 " redirect shell output to tmp file using read
