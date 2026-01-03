@@ -29,6 +29,7 @@ filetype indent on
 filetype plugin indent on
 syntax enable
 
+set termguicolors
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
