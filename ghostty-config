@@ -9,8 +9,8 @@ cursor-style-blink = true
 window-height = 40
 window-width = 150
 
-window-position-x = 5
-window-position-y = 5
+window-position-x = -10
+window-position-y = -10
 
 # This template file has been automatically created at the following
 # path since Ghostty couldn't find any existing config files on your system:

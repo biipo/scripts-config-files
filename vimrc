@@ -49,6 +49,7 @@ colorscheme slate
 
 " commands for SHELL OUTPUT TO TMP PAGE
 " redirect shell output to tmp file using read
+" Usage ':W command'
 command! -nargs=1 W execute 'split tabnew' | execute 'read !'.printf('%s', <q-args>)
 " This version also save the tmp file into /tmp/ folder
 " command! -nargs=1 Vish execute 'enew' | execute 'read !'.printf('%s', <q-args>) | execute 'w /tmp/tempfile_'.strftime('%Y%m%d%H%M%S').'.txt'
